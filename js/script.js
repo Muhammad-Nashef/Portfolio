@@ -81,7 +81,9 @@ var swiper = new Swiper('.swiper-container', {
         text: "I appreciate you reaching out. I'll review your message and respond as soon as possible.",
         icon: "success",
         confirmButtonText: "Got it!"
-    }))
+    }).then(() => {
+        form.reset(); // Clears the form after the user clicks confirm
+      }))
       .catch(error => console.error('Error!', error.message))
   })
 
