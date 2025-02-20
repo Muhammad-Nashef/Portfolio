@@ -76,7 +76,12 @@ var swiper = new Swiper('.swiper-container', {
   form.addEventListener('submit', e => {
     e.preventDefault()
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => console.log('Success!', response))
+      .then(response => Swal.fire({
+        title: "Thanks for Your Message!",
+        text: "I appreciate you reaching out. I'll review your message and respond as soon as possible.",
+        icon: "success",
+        confirmButtonText: "Got it!"
+    }))
       .catch(error => console.error('Error!', error.message))
   })
 
