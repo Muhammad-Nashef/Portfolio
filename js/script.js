@@ -45,7 +45,7 @@ ScrollReveal().reveal('.home-content h1, .about-img',{origin:'left'});
 ScrollReveal().reveal('.home-content p, .about-content',{origin:'right'});
 //typed js
 const typed = new Typed('.multiple-text',{
-    strings:['Computer engineering student'],
+    strings:['Computer engineer','Cybersecurity Enthusiast','Problem Solver','QA Tester','Team Player','Fast Learner','Adaptable Developer','Mobile App Developer','Full-Stack Developer'],
     typeSpeed:100,
     backSpeed:100,
     backDelay:1000,
@@ -79,3 +79,26 @@ var swiper = new Swiper('.swiper-container', {
       .then(response => console.log('Success!', response))
       .catch(error => console.error('Error!', error.message))
   })
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const skillSection = document.querySelector(".skills-container"); // Target the skills section
+    const skillIcons = document.querySelectorAll(".card-front img"); // Get all icons
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                skillIcons.forEach(icon => {
+                    if (!icon.classList.contains("flip")) {
+                        icon.classList.add("flip"); // Flip only once
+                        icon.addEventListener("animationend", function () {
+                            icon.classList.remove("flip"); // Remove class after animation
+                        }, { once: true });
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
+
+    observer.observe(skillSection);
+});
